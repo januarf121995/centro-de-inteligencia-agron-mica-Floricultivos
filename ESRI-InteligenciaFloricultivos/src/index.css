@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+/* Tema oficial de ArcGIS (debe cargarse antes de Tailwind). */
+@import '@arcgis/core/assets/esri/themes/light/main.css';
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* calcite-shell es un marco de aplicación a pantalla completa: necesita la
+   cadena de alturas resuelta hasta #root; el contenido se desplaza DENTRO
+   del shell (comportamiento nativo de las apps ArcGIS). */
+html,
+body,
+#root {
+  height: 100%;
+}
+
+/* El componente <arcgis-map> necesita una altura explícita para renderizar.
+   Se ajusta al contenedor del panel manteniendo el aspecto redondeado. */
+arcgis-map {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 480px;
+}

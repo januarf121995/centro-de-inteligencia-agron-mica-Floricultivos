@@ -1,6 +1,0 @@
-{
-  "name": "Centro de Inteligencia Agronómica",
-  "description": "Plataforma integral de monitoreo agrícola para florícolas que conecta datos de producción, fitosanitarios (MIPE) y fertirriego (MIRFE) en una vista espacial de bloques y camas.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
