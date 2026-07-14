@@ -3,6 +3,8 @@
 > Plataforma web de inteligencia geoespacial para el monitoreo agronómico de cultivos de flor de exportación, desarrollada para **Sector Recursos Naturales | ESRI | Colombia y Ecuador**.
 
 <p>
+  <a href="https://januarf121995.github.io/centro-de-inteligencia-agron-mica-Floricultivos/"><img alt="Demo en vivo" src="https://img.shields.io/badge/🌐_Demo_en_vivo-GitHub_Pages-2ea44f" /></a>
+  <img alt="Deploy" src="https://github.com/januarf121995/centro-de-inteligencia-agron-mica-Floricultivos/actions/workflows/deploy.yml/badge.svg" />
   <img alt="React" src="https://img.shields.io/badge/React-19-149ECA?logo=react&logoColor=white" />
   <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-5.8-3178C6?logo=typescript&logoColor=white" />
   <img alt="Vite" src="https://img.shields.io/badge/Vite-6-646CFF?logo=vite&logoColor=white" />
@@ -11,6 +13,14 @@
   <img alt="Calcite" src="https://img.shields.io/badge/Calcite_Design_System-5.x-007AC2" />
   <img alt="Licencia" src="https://img.shields.io/badge/Licencia-Apache_2.0-blue" />
 </p>
+
+## 🌐 Aplicación en vivo
+
+La aplicación está desplegada y disponible públicamente en **GitHub Pages**:
+
+### 👉 [https://januarf121995.github.io/centro-de-inteligencia-agron-mica-Floricultivos/](https://januarf121995.github.io/centro-de-inteligencia-agron-mica-Floricultivos/)
+
+Carga en tiempo real el Web Map **"Mapa Floricolas"** de ArcGIS Online con las camas del cultivo y sus indicadores agronómicos (no requiere credenciales: el contenido es público). Cada `push` a la rama `main` reconstruye y republica el sitio automáticamente.
 
 ---
 
@@ -206,14 +216,16 @@ La aplicación quedará disponible en **http://localhost:3000**.
 | `npm run preview` | `vite preview` | Sirve localmente el _build_ de producción. |
 | `npm run lint` | `tsc --noEmit` | Verificación de tipos TypeScript (sin emitir). |
 
-### Despliegue en producción
+### Despliegue en producción (GitHub Pages — automático)
 
-1. Genera los estáticos optimizados:
-   ```bash
-   npm run build
-   ```
-2. Despliega la carpeta `dist/` en cualquier hosting de estáticos moderno como **Vercel** o **Netlify** (recuerda configurar `VITE_ARCGIS_API_KEY` en las variables de entorno de la plataforma).
-3. Registra la URL pública resultante como un ítem de tipo **"Web Mapping Application"** dentro de tu **Portal Organizacional de ArcGIS Online**, para gobernar el acceso y compartirlo con los grupos de la organización.
+El despliegue está **automatizado con GitHub Actions** ([`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)): cada `push` a `main` ejecuta `npm ci` + `npm run build` (Node 22) y publica `dist/` en GitHub Pages mediante `actions/deploy-pages`.
+
+- **URL pública**: https://januarf121995.github.io/centro-de-inteligencia-agron-mica-Floricultivos/
+- La base del build (`/centro-de-inteligencia-agron-mica-Floricultivos/`) se define en [`vite.config.ts`](vite.config.ts) solo para producción; el desarrollo local sigue sirviendo en `/`.
+- El Web Map y el Feature Service son públicos, por lo que el sitio no necesita API key. Si se quisiera un mapa base premium de Esri en producción, basta con añadir el secret `VITE_ARCGIS_API_KEY` al repositorio e inyectarlo como variable de entorno en el paso de build del workflow.
+- También puede relanzarse manualmente desde la pestaña **Actions** (`workflow_dispatch`).
+
+**Alternativas**: la carpeta `dist/` (generada con `npm run build`) puede desplegarse igualmente en Vercel/Netlify. En cualquier caso, se recomienda registrar la URL pública como un ítem **"Web Mapping Application"** en el **Portal Organizacional de ArcGIS Online**, para gobernar el acceso y compartirla con los grupos de la organización.
 
 ---
 
