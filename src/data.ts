@@ -109,6 +109,9 @@ export const GIS_CONFIG: GisConfig = {
   featureServiceUrl: FEATURE_SERVICE_URL,
   layerId: 1, // Capa "Camas" del servicio (la capa 2 es "Bloques"); no existe la 0.
   layerTitle: 'Camas', // Capa operacional a enlazar dentro del Web Map.
+  // Formulario Survey123 de bitácoras de monitoreo (se abre en pestaña nueva).
+  survey123Url:
+    'https://survey123.arcgis.com/share/846133ca800843b4b48b1029fd10175d?portalUrl=https://rn-esri-co.maps.arcgis.com',
   apiKey: API_KEY,
   // topo-vector requiere apiKey; sin ella usamos OpenStreetMap (sin credencial).
   basemap: API_KEY ? 'topo-vector' : 'osm',

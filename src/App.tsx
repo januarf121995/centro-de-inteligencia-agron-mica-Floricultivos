@@ -227,11 +227,6 @@ export default function App() {
     }
   };
 
-  const handleOpenFormFromDetail = (camaId: string) => {
-    setFormPrefillId(camaId);
-    setShowForm(true);
-  };
-
   const resetAllData = () => {
     if (window.confirm('¿Desea restablecer todos los datos del Centro Agronómico a los valores iniciales de fábrica?')) {
       setBloques(BLOQUES_INICIALES);
@@ -392,7 +387,6 @@ export default function App() {
                 <BedDetail
                   cama={selectedCama}
                   onClose={() => setSelectedCamaId(null)}
-                  onOpenMonitoringForm={handleOpenFormFromDetail}
                 />
               ) : (
                 <ActionList

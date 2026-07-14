@@ -158,6 +158,11 @@ export interface GisConfig {
    * Se usa para localizar la capa de camas entre las capas del mapa cargado.
    */
   layerTitle: string;
+  /**
+   * URL del formulario Survey123 para registrar bitácoras de monitoreo.
+   * Se abre en una pestaña nueva desde el dossier de cama.
+   */
+  survey123Url: string;
   apiKey: string;
   basemap: string;
   center: [number, number]; // [lon, lat]

@@ -5,7 +5,7 @@
 
 import React from 'react';
 import { Cama } from '../types';
-import { RANGOS_OPTISMOS, calcularRiesgoCama } from '../data';
+import { GIS_CONFIG, RANGOS_OPTISMOS, calcularRiesgoCama } from '../data';
 import {
   Leaf,
   Droplet,
@@ -17,10 +17,9 @@ import {
 interface BedDetailProps {
   cama: Cama | null;
   onClose: () => void;
-  onOpenMonitoringForm: (camaId: string) => void;
 }
 
-export default function BedDetail({ cama, onClose, onOpenMonitoringForm }: BedDetailProps) {
+export default function BedDetail({ cama, onClose }: BedDetailProps) {
   if (!cama) {
     return (
       <calcite-panel heading="Dossier de Cama">
@@ -144,12 +143,14 @@ export default function BedDetail({ cama, onClose, onOpenMonitoringForm }: BedDe
 
       <div className="p-4 flex flex-col h-full overflow-y-auto">
 
-      {/* Botón de actualizar monitoreo */}
+      {/* Botón de registrar monitoreo: abre el formulario Survey123 del
+          portal en una pestaña nueva (la bitácora se captura allá). */}
       <calcite-button
         width="full"
         icon-start="clipboard"
+        icon-end="launch"
         id="btn-actualizar-monitoreo"
-        onClick={() => onOpenMonitoringForm(cama.id)}
+        onClick={() => window.open(GIS_CONFIG.survey123Url, '_blank', 'noopener,noreferrer')}
       >
         Registrar Nuevo Monitoreo
       </calcite-button>

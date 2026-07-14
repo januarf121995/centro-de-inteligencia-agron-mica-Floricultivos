@@ -3,8 +3,11 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 import {defineConfig} from 'vite';
 
-export default defineConfig(() => {
+export default defineConfig(({ command }) => {
   return {
+    // GitHub Pages sirve el sitio bajo /<nombre-del-repo>/, así que el build
+    // necesita esa base para que assets y rutas resuelvan. En dev se mantiene '/'.
+    base: command === 'build' ? '/centro-de-inteligencia-agron-mica-Floricultivos/' : '/',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
